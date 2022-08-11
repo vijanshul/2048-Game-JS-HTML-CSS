@@ -24,8 +24,8 @@ export default class Game {
         if (num == 2) { // When initialized or reset
             do {
                 var s1 = Math.floor(Math.random()*(this.size*this.size));
-                var s2 = Math.floor(Math.ran`dom()*(this.size*this.size));
-            } while (this.board[s1] !=0 || t`his.board[s2] != 0 || s1 == s2);
+                var s2 = Math.floor(Math.random()*(this.size*this.size));
+            } while (this.board[s1] !=0 || this.board[s2] != 0 || s1 == s2);
             this.board[s1] = (t1 < 0.9 ? 2 : 4);
             this.board[s2] = (t2 < 0.9 ? 2 : 4);
         } else { // after ever move
