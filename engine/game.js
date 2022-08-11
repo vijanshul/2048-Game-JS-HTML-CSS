@@ -23,14 +23,14 @@ export default class Game {
         var t2 = Math.random();
         if (num == 2) { // When initialized or reset
             do {
-                var s1 = Math.floor(Math.random()*(this.size*this.size));
-                var s2 = Math.floor(Math.random()*(this.size*this.size));
-            } while (this.board[s1] !=0 || this.board[s2] != 0 || s1 == s2);
+                var s1 = Math.floor(Math.random() * (this.size * this.size));
+                var s2 = Math.floor(Math.random() * (this.size * this.size));
+            } while (this.board[s1] != 0 || this.board[s2] != 0 || s1 == s2);
             this.board[s1] = (t1 < 0.9 ? 2 : 4);
             this.board[s2] = (t2 < 0.9 ? 2 : 4);
         } else { // after ever move
             do {
-                var s1 = Math.floor(Math.random()*(this.size*this.size));
+                var s1 = Math.floor(Math.random() * (this.size * this.size));
             } while (this.board[s1] != 0);
             this.board[s1] = (t1 < 0.9 ? 2 : 4);
         }
@@ -45,65 +45,65 @@ export default class Game {
 
     move(direction) {
         var did_i_move = false;
-        if(this.over == false){
+        if (this.over == false) {
             switch (direction) {
                 case 'left':
                     // Left pressed
-                        for(var x=0; x<this.size*this.size; x += this.size){
-                            for (var i=x+1; i<x+this.size; i++) { // slide left
-                                var temp = i;
-                                while (temp>x && this.board[temp-1] == 0 && this.board[temp] != 0) {
-                                    did_i_move = true;
-                                    this.board[temp-1] = this.board[temp];
-                                    this.board[temp] = 0;
-                                    temp--;
-                                }
+                    for (var x = 0; x < this.size * this.size; x += this.size) {
+                        for (var i = x + 1; i < x + this.size; i++) { // slide left
+                            var temp = i;
+                            while (temp > x && this.board[temp - 1] == 0 && this.board[temp] != 0) {
+                                did_i_move = true;
+                                this.board[temp - 1] = this.board[temp];
+                                this.board[temp] = 0;
+                                temp--;
                             }
-                            for (var i=x+1; i< x+this.size; i++) { // combine
-                                if (this.board[i] != 0 && (this.board[i] == this.board[i-1])) {
-                                    did_i_move = true;
-                                    this.board[i-1] = this.board[i-1] * 2;
-                                    this.score += this.board[i-1]; // Update the score
-                                    this.board[i] = 0;
-                                }
-                            }
-                            for (var i=x+1; i<x + this.size; i++) { //slide again
-                                var temp = i;
-                                while (temp>x && this.board[temp-1] == 0 && this.board[temp] != 0) {
-                                    did_i_move = true;
-                                    this.board[temp-1] = this.board[temp];
-                                    this.board[temp] = 0;
-                                    temp--;
-                                }
-                            }
-              
                         }
-                        break;
+                        for (var i = x + 1; i < x + this.size; i++) { // combine
+                            if (this.board[i] != 0 && (this.board[i] == this.board[i - 1])) {
+                                did_i_move = true;
+                                this.board[i - 1] = this.board[i - 1] * 2;
+                                this.score += this.board[i - 1]; // Update the score
+                                this.board[i] = 0;
+                            }
+                        }
+                        for (var i = x + 1; i < x + this.size; i++) { //slide again
+                            var temp = i;
+                            while (temp > x && this.board[temp - 1] == 0 && this.board[temp] != 0) {
+                                did_i_move = true;
+                                this.board[temp - 1] = this.board[temp];
+                                this.board[temp] = 0;
+                                temp--;
+                            }
+                        }
+
+                    }
+                    break;
                 case 'right':
                     // Right pressed
-                    for (var x=this.size-1; x<this.size*this.size; x += this.size) { 
-                        for (var i=x; i>x-this.size; i--) { // slide right
+                    for (var x = this.size - 1; x < this.size * this.size; x += this.size) {
+                        for (var i = x; i > x - this.size; i--) { // slide right
                             var temp = i;
-                            while (temp<x && this.board[temp+1] == 0 && this.board[temp] != 0) {
+                            while (temp < x && this.board[temp + 1] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp+1] = this.board[temp];
+                                this.board[temp + 1] = this.board[temp];
                                 this.board[temp] = 0;
                                 temp++;
                             }
                         }
-                        for (var i=x-1; i>x-this.size; i--) { // combine
-                            if (this.board[i] != 0 && (this.board[i] == this.board[i+1])) {
+                        for (var i = x - 1; i > x - this.size; i--) { // combine
+                            if (this.board[i] != 0 && (this.board[i] == this.board[i + 1])) {
                                 did_i_move = true;
-                                this.board[i+1] = this.board[i+1] * 2;
-                                this.score += this.board[i+1]; // Update the score
+                                this.board[i + 1] = this.board[i + 1] * 2;
+                                this.score += this.board[i + 1]; // Update the score
                                 this.board[i] = 0;
                             }
                         }
-                        for (var i=x; i>x-this.size; i--) { // slide again
+                        for (var i = x; i > x - this.size; i--) { // slide again
                             var temp = i;
-                            while (temp<x && this.board[temp+1] == 0 && this.board[temp] != 0) {
+                            while (temp < x && this.board[temp + 1] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp+1] = this.board[temp];
+                                this.board[temp + 1] = this.board[temp];
                                 this.board[temp] = 0;
                                 temp++;
                             }
@@ -112,29 +112,31 @@ export default class Game {
                     break;
                 case 'up':
                     // Up pressed
-                    for (var x=0; x<this.size; x++) {
-                        for (var i=x+this.size; i<= this.size*this.size - this.size + x; i+= this.size) { // slide up
+                    for (var x = 0; x < this.size; x++) {
+                        for (var i = x + this.size; i <= this.size * this.size - this.size + x; i += this
+                            .size) { // slide up
                             var temp = i;
-                            while (temp > x && this.board[temp-this.size] == 0 && this.board[temp] != 0) {
+                            while (temp > x && this.board[temp - this.size] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp-this.size] = this.board[temp];
+                                this.board[temp - this.size] = this.board[temp];
                                 this.board[temp] = 0;
                                 temp = temp - this.size;
                             }
                         }
-                        for (var i=x; i<= (this.size*this.size) - this.size + x; i+=this.size) { // combine
-                            if (this.board[i] != 0 && (this.board[i-this.size] == this.board[i])) {
+                        for (var i = x; i <= (this.size * this.size) - this.size + x; i += this.size) { // combine
+                            if (this.board[i] != 0 && (this.board[i - this.size] == this.board[i])) {
                                 did_i_move = true;
-                                this.board[i-this.size] = this.board[i-this.size] * 2;
-                                this.score += this.board[i-this.size]; // Update the score
+                                this.board[i - this.size] = this.board[i - this.size] * 2;
+                                this.score += this.board[i - this.size]; // Update the score
                                 this.board[i] = 0;
                             }
                         }
-                        for (var i=x+this.size; i<= (this.size*this.size) - this.size + x; i+= this.size) { // slide again
+                        for (var i = x + this.size; i <= (this.size * this.size) - this.size + x; i += this
+                            .size) { // slide again
                             var temp = i;
-                            while (temp > x && this.board[temp-this.size] == 0 && this.board[temp] != 0) {
+                            while (temp > x && this.board[temp - this.size] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp-this.size] = this.board[temp];
+                                this.board[temp - this.size] = this.board[temp];
                                 this.board[temp] = 0;
                                 temp = temp - this.size;
                             }
@@ -143,31 +145,32 @@ export default class Game {
                     break;
                 case 'down':
                     // Down pressed
-                    for (var x=0; x<this.size; x++) {
-                        for (var i=x + (this.size-2)*this.size; i>=x; i -= this.size) { // slide down
+                    for (var x = 0; x < this.size; x++) {
+                        for (var i = x + (this.size - 2) * this.size; i >= x; i -= this.size) { // slide down
                             var temp = i;
-                            while (temp <= x+(this.size*this.size-this.size) && this.board[temp+this.size] == 0 && this.board[temp] != 0) {
+                            while (temp <= x + (this.size * this.size - this.size) && this.board[temp + this
+                                .size] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp+this.size] = this.board[temp];
+                                this.board[temp + this.size] = this.board[temp];
                                 this.board[temp] = 0;
-                                temp +=this.size;
+                                temp += this.size;
                             }
                         }
-                        for (var i=x+this.size*this.size-this.size; i>=x; i-=this.size) { // combine
-                            if (this.board[i] != 0 && this.board[i+this.size] == this.board[i]) {
+                        for (var i = x + this.size * this.size - this.size; i >= x; i -= this.size) { // combine
+                            if (this.board[i] != 0 && this.board[i + this.size] == this.board[i]) {
                                 did_i_move = true;
-                                this.board[i+this.size] = this.board[i+this.size] * 2;
-                                this.score += this.board[i+this.size]; // Update the score
+                                this.board[i + this.size] = this.board[i + this.size] * 2;
+                                this.score += this.board[i + this.size]; // Update the score
                                 this.board[i] = 0;
                             }
                         }
-                        for (var i=x+(this.size-2)*this.size; i>=x; i-= this.size) { // slide again
+                        for (var i = x + (this.size - 2) * this.size; i >= x; i -= this.size) { // slide again
                             var temp = i;
-                            while (temp >= 0 && this.board[temp+this.size] == 0 && this.board[temp] != 0) {
+                            while (temp >= 0 && this.board[temp + this.size] == 0 && this.board[temp] != 0) {
                                 did_i_move = true;
-                                this.board[temp+this.size] = this.board[temp];
+                                this.board[temp + this.size] = this.board[temp];
                                 this.board[temp] = 0;
-                                temp +=this.size;
+                                temp += this.size;
                             }
                         }
                     }
@@ -176,44 +179,46 @@ export default class Game {
                     break;
             }
             // Adding extra tile after moving
-            if(did_i_move == true) this.addTiles();
+            if (did_i_move == true) this.addTiles();
 
             // CHECK WIN/LOSE CONDITIONS
             var canimove = false;
-            for(let i=0; i<this.size*this.size - 1; i++){
-                if(this.won == false && this.board[i] == 2048){
+            for (let i = 0; i < this.size * this.size - 1; i++) {
+                if (this.won == false && this.board[i] == 2048) {
                     this.won = true;
                     this.gameState.board = this.board;
                     this.gameState.score = this.score;
                     this.gameState.won = this.won;
                     this.gameState.over = this.over;
 
-                    this.win_trackers.forEach(function(e){
+                    this.win_trackers.forEach(function(e) {
                         e(this.getGameState());
-                    }, this);  
+                    }, this);
                 }
-                if(this.board[i] == 0){
+                if (this.board[i] == 0) {
                     canimove = true;
                 }
             }
             // check rows
-            for (let i=0; i<this.board.length; i+=this.size) {
+            for (let i = 0; i < this.board.length; i += this.size) {
                 var temp = i;
-                while (temp < i + this.size-1) {
-                    if (this.board[temp] == 0 || this.board[temp+1] == 0 || (this.board[temp] == this.board[temp+1])) {
+                while (temp < i + this.size - 1) {
+                    if (this.board[temp] == 0 || this.board[temp + 1] == 0 || (this.board[temp] == this.board[temp +
+                            1])) {
                         canimove = true;
                     }
                     temp++;
                 }
             }
             //check columns:
-            for (let i=0; i<this.size; i++) {
+            for (let i = 0; i < this.size; i++) {
                 var temp = i;
-                while (temp < this.size*this.size - this.size + i) {
-                    if (this.board[temp] == 0 || this.board[temp+this.size] == 0 || (this.board[temp] == this.board[temp+this.size])) {
+                while (temp < this.size * this.size - this.size + i) {
+                    if (this.board[temp] == 0 || this.board[temp + this.size] == 0 || (this.board[temp] == this
+                            .board[temp + this.size])) {
                         canimove = true;
                     }
-                    temp = temp+this.size;
+                    temp = temp + this.size;
                 }
             }
 
@@ -224,18 +229,18 @@ export default class Game {
                 this.gameState.won = this.won;
                 this.gameState.over = this.over;
 
-                this.lose_trackers.forEach(function(e){
+                this.lose_trackers.forEach(function(e) {
                     e(this.getGameState());
-                }, this);            
+                }, this);
             }
             // track moves
-            this.move_trackers.forEach(function(e){
+            this.move_trackers.forEach(function(e) {
                 e(this.getGameState());
             }, this);
 
         }
-        
-        
+
+
     }
     onMove(callback) {
         this.move_trackers.push(callback);
@@ -265,7 +270,7 @@ export default class Game {
             if (count % this.size == 0) {
                 s += "\n";
             } else {
-                s+= " ";
+                s += " ";
             }
         });
         return s;
