@@ -1,56 +1,60 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>2048</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="engine/numberTile.js"></script>
-	<script src="engine/animation.js"></script>
-	<script src="engine/startGame.js"></script>
-	<script src="engine/drawCanvas.js"></script>
-</head>
-<body>
-	<div id="container">
-		<div id="header">
-			<div id="title">2048 with a Twist!</div>
-			<div id="score">
-				<button class="btn btn-round color-3 material-design" data-color="#ffffff" onclick="setupNewGame()">NEW GAME</button>
-				<script src="engine/drawCanvas.js"></script>
-				<div>
-					<span>SCORE:<span id="score1"></span ></span>
-				</div>
-			</div>
-		</div>
-		<div id="body">
-			<div class="row">
-				<div class="col" id="col-0-0">
-					
-				</div>
-				<div class="col" id="col-0-1"></div>
-				<div class="col" id="col-0-2"></div>
-				<div class="col" id="col-0-3"></div>
-			</div>
-			<div class="row">
-				<div class="col" id="col-1-0"></div>
-				<div class="col" id="col-1-1"></div>
-				<div class="col" id="col-1-2"></div>
-				<div class="col" id="col-1-3"></div>
-			</div>
-			<div class="row">
-				<div class="col" id="col-2-0"></div>
-				<div class="col" id="col-2-1"></div>
-				<div class="col" id="col-2-2"></div>
-				<div class="col" id="col-2-3"></div>
-			</div>
-			<div class="row">
-				<div class="col" id="col-3-0"></div>
-				<div class="col" id="col-3-1"></div>
-				<div class="col" id="col-3-2"></div>
-				<div class="col" id="col-3-3"></div>
-			</div>
-		</div>
-	</div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>2048</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="engine/numberTile.js"></script>
+    <script src="engine/animation.js"></script>
+    <script src="engine/startGame.js"></script>
+    <script src="engine/drawCanvas.js"></script>
+  </head>
 
-</body>
+  <body>
+    <div id="container">
+      <div id="header">
+        <div id="title">2048</div>
+        <div id="score">
+          <button
+            class="btn btn-round color-3 material-design"
+            data-color="#ffffff"
+            onclick="setupNewGame()"
+          >
+            NEW GAME
+          </button>
+          <script src="engine/drawCanvas.js"></script>
+          <div>
+            <span>SCORE: <span id="score1"></span></span>
+          </div>
+        </div>
+      </div>
+      <div id="body">
+        <div class="row">
+          <div class="col" id="col-0-0"></div>
+          <div class="col" id="col-0-1"></div>
+          <div class="col" id="col-0-2"></div>
+          <div class="col" id="col-0-3"></div>
+        </div>
+        <div class="row">
+          <div class="col" id="col-1-0"></div>
+          <div class="col" id="col-1-1"></div>
+          <div class="col" id="col-1-2"></div>
+          <div class="col" id="col-1-3"></div>
+        </div>
+        <div class="row">
+          <div class="col" id="col-2-0"></div>
+          <div class="col" id="col-2-1"></div>
+          <div class="col" id="col-2-2"></div>
+          <div class="col" id="col-2-3"></div>
+        </div>
+        <div class="row">
+          <div class="col" id="col-3-0"></div>
+          <div class="col" id="col-3-1"></div>
+          <div class="col" id="col-3-2"></div>
+          <div class="col" id="col-3-3"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
