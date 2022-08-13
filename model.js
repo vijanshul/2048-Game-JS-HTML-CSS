@@ -38,7 +38,7 @@ export const newGame = function(game) {
     if (initialize == false) {
         initialize = true;
         $('#reset').on("click", function() {
-            game.setupNewGame();
+            game.setupsetupNewGame();
             document.getElementById("end").innerHTML = "";
             newGame(game);
         });
