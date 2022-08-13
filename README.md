@@ -1,6 +1,6 @@
 # 2048-Game-JS-HTML-CSS
 
-![2048](https://github.com/vijanshul/2048-Game-JS-HTML-CSS/raw/main/assets/Readme_Image.png)
+![2048](https://github.com/vijanshul/2048-Game-JS-HTML-CSS/raw/main/assets/2048_vijanshul.gif)
 
 ## **https://vijanshul-2048.netlify.app/**
 
