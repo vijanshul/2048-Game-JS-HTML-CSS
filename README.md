@@ -1,6 +1,8 @@
 # 2048-Game-JS-HTML-CSS
 
-https://vijanshul-2048.netlify.app/
+![2048](https://github.com/vijanshul/2048-Game-JS-HTML-CSS/raw/main/assets/Readme_Image.png)
+
+## **https://vijanshul-2048.netlify.app/**
 
 Created a web version of the popular 2048 game in HTML/CSS/JavaScript. 
 
