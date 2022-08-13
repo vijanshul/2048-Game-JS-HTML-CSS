@@ -10,6 +10,28 @@ $(document).ready(() => {
   setupNewGame();
 });
 
+const refreshScore = (score) => {
+  $("#score1").text(score);
+};
+
+const noMove = (nums) => {
+  if (
+    checkMoveLeft(nums) ||
+    checkMoveRight(nums) ||
+    checkMoveUp(nums) ||
+    checkMoveDown(nums)
+  ) {
+    return false;
+  }
+  return true;
+};
+
+const checkGameOver = () => {
+  if (noSpace(nums) && noMove(nums)) {
+    alert("Game Over!");
+  }
+};
+
 const setupNewGame = () => {
   initializeGrid();
 };
@@ -44,17 +66,17 @@ const refreshView = () => {
         '<div class="number-cell" id="number-cell-' + i + "-" + j + '"></div>'
       );
 
-      var numberCell = $("#number-cell-" + i + "-" + j);
+      var numCell = $("#number-cell-" + i + "-" + j);
 
       if (nums[i][j] == 0) {
-        numberCell.css({
+        numCell.css({
           width: "0px",
           top: 50,
           left: 50,
           height: "0px",
         });
       } else {
-        numberCell
+        numCell
           .css({
             width: "100px",
             height: "100px",
@@ -334,26 +356,4 @@ const checkBlockVerticalIsNull = (col, row1, row2, nums) => {
     }
   }
   return true;
-};
-
-const refreshScore = (score) => {
-  $("#score1").text(score);
-};
-
-const noMove = (nums) => {
-  if (
-    checkMoveLeft(nums) ||
-    checkMoveRight(nums) ||
-    checkMoveUp(nums) ||
-    checkMoveDown(nums)
-  ) {
-    return false;
-  }
-  return true;
-};
-
-const checkGameOver = () => {
-  if (noSpace(nums) && noMove(nums)) {
-    alert("Game Over!");
-  }
 };

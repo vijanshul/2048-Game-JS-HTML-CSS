@@ -1,30 +1,11 @@
-const numAnimation = (i, j, randNumber) => {
-  var numberCell = $("#number-cell-" + i + "-" + j);
-  numberCell
-    .css({
-      "background-color": getBackgroundNumCol(randNumber),
-      color: getNumCol(randNumber),
-    })
-    .text(randNumber)
-    .animate(
-      {
-        top: 0,
-        left: 0,
-        width: "100px",
-        height: "100px",
-      },
-      500
-    );
-};
-
-const moveAnimate = (fromx, fromy, tox, toy) => {
-  var numberCell = $("#number-cell-" + fromx + "-" + fromy);
-  var numberCell1 = $("#number-cell-" + tox + "-" + toy);
-  numberCell1
-    .text(numberCell.text())
+const moveAnimate = (fromX, fromY, toXPosition, toYPosition) => {
+  var numCell = $("#number-cell-" + fromX + "-" + fromY);
+  var numCellUpdated = $("#number-cell-" + toXPosition + "-" + toYPosition);
+  numCellUpdated
+    .text(numCell.text())
     .css({
       "background-color": "#fff",
-      color: getNumCol(numberCell.text()),
+      color: getNumCol(numCell.text()),
     })
     .animate(
       {
@@ -35,7 +16,7 @@ const moveAnimate = (fromx, fromy, tox, toy) => {
       },
       200
     );
-  numberCell.animate(
+  numCell.animate(
     {
       top: "50px",
       left: "50px",
@@ -44,4 +25,23 @@ const moveAnimate = (fromx, fromy, tox, toy) => {
     },
     200
   );
+};
+
+const numAnimation = (i, j, randomNum) => {
+  var numCell = $("#number-cell-" + i + "-" + j);
+  numCell
+    .css({
+      "background-color": getBackgroundNumCol(randomNum),
+      color: getNumCol(randomNum),
+    })
+    .text(randomNum)
+    .animate(
+      {
+        top: 0,
+        left: 0,
+        width: "100px",
+        height: "100px",
+      },
+      500
+    );
 };

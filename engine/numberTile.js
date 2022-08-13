@@ -1,3 +1,11 @@
+const getNumCol = (num) => {
+  if (num <= 4) {
+    return "#776e65";
+  } else {
+    return "#fff";
+  }
+};
+
 const getBackgroundNumCol = (num) => {
   switch (num) {
     case 2:
@@ -39,13 +47,5 @@ const getBackgroundNumCol = (num) => {
     case 8192:
       return "#93c";
       break;
-  }
-};
-
-const getNumCol = num => {
-  if (num <= 4) {
-    return "#776e65";
-  } else {
-    return "#fff";
   }
 };
